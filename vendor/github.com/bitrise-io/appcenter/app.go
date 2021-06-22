@@ -23,9 +23,9 @@ func (a App) NewRelease(filePath string, opts ...ReleaseOptions) (Release, error
 		}
 	)
 
-	if len(opts) > 0 {
-		postBody = &opts[0]
-	}
+	//if len(opts) > 0 {
+	//	postBody = &opts[0]
+	//}
 
 	statusCode, err := a.client.jsonRequest(http.MethodPost, postURL, postBody, &postResponse)
 	if err != nil {
