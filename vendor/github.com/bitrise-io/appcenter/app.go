@@ -16,7 +16,8 @@ func (a App) NewRelease(filePath string, opts ...ReleaseOptions) (Release, error
 	// send file upload request
 	var (
 		postURL      = fmt.Sprintf("%s/v0.1/apps/%s/%s/release_uploads", baseURL, a.owner, a.name)
-		postBody     = "{\"body\":\"Some dummy release notes...\"}"
+		//postBody     = "{\"body\":\"Some dummy release notes\"}"
+		postBody = []byte(`{"body":"Some dummy release notes"}`)
 		postResponse struct {
 			UploadID  string `json:"upload_id"`
 			UploadURL string `json:"upload_url"`
