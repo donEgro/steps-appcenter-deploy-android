@@ -332,12 +332,13 @@ func (api API) CreateRelease(opts model.ReleaseOptions) (int, error) {
 	fmt.Println(fmt.Sprintf("- File size: %s", strconv.Itoa(fileSize)))
 
 	var (
-		metadataURL = fmt.Sprintf("%s/upload/set_metadata/%s?file_name=%s&file_size=%s&token=%s",
+		metadataURL = fmt.Sprintf("%s/upload/set_metadata/%s?file_name=%s&file_size=%s&token=%s&content_type=%s",
 			assetResponse.UploadDomain,
 			assetResponse.PackageAssetID,
 			url.QueryEscape(fileName),
 			strconv.Itoa(fileSize),
-			assetResponse.URLEncodedToken)
+			assetResponse.URLEncodedToken,
+			"application/vnd.android.package-archive")
 		metadataResponse struct {
 			ID             string `json:"id"`
 			ChunkSize      int    `json:"chunk_size"`
